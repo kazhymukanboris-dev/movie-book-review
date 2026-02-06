@@ -1,0 +1,125 @@
+/* --- Root Variables & Reset --- */
+:root {
+    --primary: #00e0ff;
+    --secondary: #7000ff;
+    --bg: #030712;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+body { 
+    background-color: var(--bg);
+    color: var(--text-main); 
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Background Animations --- */
+.orb {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.15;
+    animation: float 20s infinite alternate;
+}
+
+.orb-1 { 
+    top: -10%; 
+    right: -10%; 
+    background: var(--primary); 
+}
+
+.orb-2 { 
+    bottom: -10%; 
+    left: -10%; 
+    background: var(--secondary); 
+    animation-delay: -5s; 
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 80px) scale(1.2); }
+}
+
+/* --- Header & Navigation --- */
+header { 
+    padding: 1.2rem 8%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+header h1 { 
+    font-size: 1.5rem; 
+    background: linear-gradient(to right, var(--primary), var(--secondary)); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+nav a { 
+    margin-left: 2rem; 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    transition: 0.3s; 
+}
+
+nav a:hover { 
+    color: var(--primary); 
+}
+
+/* --- Buttons --- */
+.btn-primary, .btn-outline {
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 224, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 224, 255, 0.5);
+    filter: brightness(1.1);
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px);
+}

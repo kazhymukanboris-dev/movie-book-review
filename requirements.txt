@@ -1,3 +1,6 @@
 asgiref==3.11.0
 Django==6.0
 sqlparse==0.5.5
+djangorestframework  # Нужен для твоих API эндпоинтов
+gunicorn             # HTTP-сервер для запуска Django на Render
+whitenoise           # Позволяет Django раздавать статику (CSS) в деплое
