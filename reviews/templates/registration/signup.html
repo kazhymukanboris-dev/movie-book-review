@@ -1,0 +1,28 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+<div class="container" style="display: flex; justify-content: center; padding-top: 80px;">
+    <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; width: 100%; max-width: 500px; border: 1px solid rgba(255,255,255,0.1);">
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Create Account</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; color: #cbd5e1; margin-bottom: 8px;">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                <small style="color: #64748b; display: block; margin-top: 5px;">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Sign Up</button>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px; color: #94a3b8;">
+            Already have an account? <a href="{% url 'login' %}" style="color: var(--primary);">Login</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

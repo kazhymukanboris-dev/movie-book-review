@@ -1,0 +1,27 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+<div class="container" style="display: flex; justify-content: center; padding-top: 100px;">
+    <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; width: 100%; max-width: 450px; border: 1px solid rgba(255,255,255,0.1);">
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Welcome Back</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; color: #cbd5e1; margin-bottom: 8px;">Username</label>
+                {{ form.username }}
+            </div>
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; color: #cbd5e1; margin-bottom: 8px;">Password</label>
+                {{ form.password }}
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%;">Login</button>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px; color: #94a3b8;">
+            New here? <a href="{% url 'signup' %}" style="color: var(--primary);">Create an Account</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

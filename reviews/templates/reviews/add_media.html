@@ -1,0 +1,41 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+<div class="container" style="display: flex; justify-content: center; padding-top: 60px;">
+    <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); width: 100%; max-width: 600px; padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+        
+        <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 10px; color: #fff;">Add New Media</h2>
+        <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Share a favorite movie or book with the community.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; color: var(--primary); font-weight: 600; margin-bottom: 8px;">
+                    {{ field.label }}
+                </label>
+                
+                {{ field }}
+                
+                {% if field.help_text %}
+                <small style="color: #64748b; display: block; margin-top: 5px;">{{ field.help_text }}</small>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                <div style="color: #ff4757; font-size: 0.85rem; margin-top: 5px;">{{ error }}</div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 10px;">
+                Publish Item
+            </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{% url 'home' %}" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Cancel and go back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
