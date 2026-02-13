@@ -131,3 +131,10 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 ALLOWED_HOSTS = ['*']
+# ... existing code ...
+
+# Redirect to the home page after a successful login
+LOGIN_REDIRECT_URL = 'home'
+
+# Redirect to the home page after logging out
+LOGOUT_REDIRECT_URL = 'home'
